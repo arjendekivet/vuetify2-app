@@ -11,13 +11,15 @@
       <v-btn @click="toggleDark">toggle theme</v-btn>
     </v-app-bar>
     <v-main>
-      <HelloWorld></HelloWorld>
+      <!-- <div>ZCalendar</div> -->
+      <ZCalendar></ZCalendar>
     </v-main>
   </v-app>
 </template>
 
 <script>
 import { ref } from '@vue/composition-api'
+import ZCalendar from './components/ZCalendar.vue'
 import HelloWorld from './components/HelloWorld.vue'
 
 export default {
@@ -40,7 +42,7 @@ export default {
       toggleDark
     };
   },
-  components: { HelloWorld },
+  components: { ZCalendar, HelloWorld },
   methods: {
     setTheme() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
