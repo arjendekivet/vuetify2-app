@@ -1,36 +1,36 @@
 <template>
     <div class="z-calendar">
         <!-- <v-container> -->
-        <!--  optional: no-gutters -->
+        <!--  optional: no-gutters,  class="fill-height" -->
         <v-row>
-            <v-col cols="12" md="6" lg="4" v-for="month in months" v-bind:key="month" class="month">
-                <div class="month__title">{{ month }}</div>
-                <v-calendar
-                    ref="calendar"
-                    :value="month"
-                    :events="events"
-                    color="primary"
-                    type="month"
-                    :weekdays="[1, 2, 3, 4, 5, 6, 0]"
-                    :locale="getLocale()"
-                    :show-month-on-first="false"
-                ></v-calendar>
+            <v-col
+                cols="12"
+                sm="6"
+                md="4"
+                lg="3"
+                v-for="month in months"
+                v-bind:key="month"
+                class="month"
+            >
+                <v-sheet height="64">
+                    <div class="month__title">{{ month }}</div>
+                </v-sheet>
+                <v-sheet>
+                    <!-- :min-weeks="6" -->
+                    <v-calendar
+                        ref="calendar"
+                        :value="getCalendarMonth(month)"
+                        :events="events"
+                        color="primary"
+                        type="month"
+                        :weekdays="[1, 2, 3, 4, 5, 6, 0]"
+                        :locale="getLocale()"
+                        :show-month-on-first="false"
+                    ></v-calendar>
+                </v-sheet>
             </v-col>
         </v-row>
         <!-- </v-container> -->
-        <!-- <div v-for="month in months" v-bind:key="month" class="month">
-            <div></div>
-            <v-calendar
-                ref="calendar"
-                :value="month"
-                :events="events"
-                color="primary"
-                type="month"
-                :weekdays="[1, 2, 3, 4, 5, 6, 0]"
-                :locale="getLocale()"
-                :show-month-on-first="true"
-            ></v-calendar>
-        </div>-->
     </div>
 </template>
 
@@ -49,22 +49,26 @@ export default {
         // const events = ref<event[]>();
         const today = ref(new Date());
         const events = ref();
-        const months = ref(['2021-11-01', '2021-12-01', '2022-01-01']);
+        // const months = ref(['2021-11-01', '2021-12-01', '2022-01-01']);
+        const months = ref([-2, -1, 0, 1, 2]);
 
         events.value = [
             {
-                name: 'Weekly Meeting',
+                name: 'Verzuim',
                 start: '2021-12-07',
                 end: '2021-12-08',
             },
             {
-                name: `Thomas' Birthday`,
-                start: '2019-01-10',
+                name: `Verzuim`,
+                start: '2021-11-06',
             },
+            // {
+            //     name: `Verzuim`,
+            //     start: '2021-11-06',
+            // },
             {
-                name: 'Mash Potatoes',
-                start: '2019-01-09 12:30',
-                end: '2019-01-09 15:30',
+                name: 'Verzuim',
+                start: '2022-02-08',
             },
         ]
 
@@ -78,6 +82,10 @@ export default {
     methods: {
         getLocale() {
             return navigator.language
+        },
+        getCalendarMonth(monthAdjust) {
+            const now = new Date()
+            return now.setMonth(now.getMonth() + monthAdjust)
         }
     }
 }
@@ -89,7 +97,7 @@ export default {
         // width: 300px;
         // margin: 12px;
         // border: 12px;
-        margin-top: 24px;
+        // margin-top: 24px;
     }
     .container {
         padding: 0;
@@ -98,6 +106,17 @@ export default {
     .month__title {
         // margin-top: 12px;
         overflow: hidden;
+    }
+    .v-calendar.v-calendar-events .v-calendar-weekly__day {
+        height: 3.5em;
+        // overflow: hidden;
+    }
+    .v-btn--fab.v-size--small {
+        height: 20px;
+        width: 20px;
+    }
+    .v-event {
+        margin: 0px 3px 3px 3px;
     }
 }
 </style>
