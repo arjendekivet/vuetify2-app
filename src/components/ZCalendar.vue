@@ -118,74 +118,78 @@ export default {
     .z-calendar__body {
         border: solid 1px lightgrey;
         padding: 2px;
-    }
-    .container {
-        padding: 0;
-        max-width: 100%;
-    }
-    .month__title__bar {
-        &.v-sheet {
-            background-color: darkgray;
-            text-align: center;
-            line-height: 40px;
-            color: #ffffff;
-            margin-bottom: 5px;
+
+        .container {
+            padding: 0;
+            max-width: 100%;
         }
-    }
-    .month__title {
-        overflow: hidden;
-        font-weight: 700;
-    }
-    .v-calendar.v-calendar-events .v-calendar-weekly__day {
-        // height: 3.5em;
-        // overflow: hidden;
-    }
-    .v-calendar .v-btn {
-        font-weight: 400;
-        z-index: 2;
-        margin-bottom: 1px;
-    }
-    .v-btn--fab.v-size--small {
-        height: 20px;
-        width: 20px;
-    }
-    .v-event {
-        margin: 0px 3px 3px 1px;
-    }
-    .v-calendar.v-calendar-events .v-event-more {
-        display: none;
-    }
-    .v-calendar.v-calendar-weekly .v-calendar-weekly__day {
-        border-right: 0;
-        border-bottom: 0;
-        color: darkgray;
-    }
-    .v-calendar.v-calendar-events .v-calendar-weekly__day {
-        margin-right: 0px;
-    }
-    .v-calendar.v-calendar-weekly .v-calendar-weekly__day.v-outside {
-        visibility: hidden;
-    }
-    .v-calendar.v-calendar-weekly .v-calendar-weekly__head-weekday.v-outside {
-        background-color: transparent;
-    }
-    .v-calendar.v-calendar-weekly .v-calendar-weekly__head-weekday.v-past {
-        color: darkgray;
-    }
-    .v-calendar.v-calendar-weekly .v-calendar-weekly__head-weekday {
-        border-right: 0;
-    }
-    .v-calendar.v-calendar-events .v-calendar-weekly__head-weekday {
-        margin-right: 0px;
-    }
-    .v-calendar.v-calendar-weekly {
-        border-top: 0;
-        border-left: 0;
-        padding-left: 10px;
-    }
-    .v-calendar .v-event {
-        margin-top: -22px;
-        // z-index: 1;
+        .month__title__bar {
+            &.v-sheet {
+                background-color: darkgray;
+                text-align: center;
+                line-height: 40px;
+                color: #ffffff;
+                margin-bottom: 5px;
+            }
+        }
+        .month__title {
+            overflow: hidden;
+            font-weight: 700;
+        }
+        .v-calendar.v-calendar-events .v-calendar-weekly__day {
+            // height: 3.5em;
+            // overflow: hidden;
+        }
+        .v-calendar .v-btn {
+            font-weight: 400;
+            z-index: 2;
+            margin-bottom: 1px;
+        }
+        .v-btn--fab.v-size--small {
+            height: 20px;
+            width: 20px;
+        }
+        .v-event {
+            margin: 0px 3px 3px 1px;
+        }
+        .v-calendar.v-calendar-events .v-event-more {
+            display: none;
+        }
+        .v-calendar.v-calendar-weekly .v-calendar-weekly__day {
+            border-right: 0;
+            border-bottom: 0;
+            color: darkgray;
+        }
+        .v-calendar.v-calendar-events .v-calendar-weekly__day {
+            margin-right: 0px;
+        }
+        .v-calendar.v-calendar-weekly .v-calendar-weekly__day.v-outside {
+            visibility: hidden;
+        }
+        .v-calendar.v-calendar-weekly
+            .v-calendar-weekly__head-weekday.v-outside {
+            background-color: transparent;
+        }
+        .v-calendar.v-calendar-weekly .v-calendar-weekly__head-weekday.v-past,
+        .v-calendar.v-calendar-weekly
+            .v-calendar-weekly__head-weekday.v-future {
+            color: darkgray;
+        }
+        .v-calendar.v-calendar-weekly .v-calendar-weekly__head-weekday {
+            border-right: 0;
+        }
+        .v-calendar.v-calendar-events .v-calendar-weekly__head-weekday {
+            margin-right: 0px;
+        }
+        .v-calendar.v-calendar-weekly {
+            border-top: 0;
+            border-left: 0;
+            padding-left: 10px;
+        }
+        .v-calendar .v-event {
+            margin-top: -22px;
+            // z-index: 1;
+        }
     }
 }
 </style>
