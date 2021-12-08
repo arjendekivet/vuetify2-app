@@ -12,7 +12,7 @@
     </v-app-bar>
     <v-main>
       <!-- <div>ZCalendar</div> -->
-      <ZCalendar></ZCalendar>
+      <ZCalendar :gutters="false"></ZCalendar>
     </v-main>
   </v-app>
 </template>
@@ -24,10 +24,8 @@ import HelloWorld from './components/HelloWorld.vue'
 
 export default {
   setup(props, context) {
-    const theme = ref("dark");
     const collapsed = ref(false);
     const drawer = ref(false);
-    const toggleTheme = () => theme.value = theme.value === "light" ? "dark" : "light"
     const toggleDark = () => {
       // eslint-disable-next-line no-debugger
       // debugger
@@ -35,10 +33,8 @@ export default {
     }
 
     return {
-      theme,
       collapsed,
       drawer,
-      toggleTheme,
       toggleDark
     };
   },
