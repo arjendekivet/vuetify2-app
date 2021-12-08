@@ -6,14 +6,14 @@
             <v-col
                 cols="12"
                 sm="6"
-                md="4"
+                md="2"
                 lg="3"
                 v-for="month in months"
                 v-bind:key="month"
                 class="month"
             >
-                <v-sheet height="64">
-                    <div class="month__title">{{ month }}</div>
+                <v-sheet height="24">
+                    <div class="month__title">{{ getMonthName(month) }}</div>
                 </v-sheet>
                 <v-sheet>
                     <!-- :min-weeks="6" -->
@@ -26,6 +26,7 @@
                         :weekdays="[1, 2, 3, 4, 5, 6, 0]"
                         :locale="getLocale()"
                         :show-month-on-first="false"
+                        event-color="orange"
                     ></v-calendar>
                 </v-sheet>
             </v-col>
@@ -34,7 +35,7 @@
     </div>
 </template>
 
-<script lang="ts">
+<script>
 import { ref } from '@vue/composition-api';
 
 // type event = {
@@ -50,24 +51,34 @@ export default {
         const today = ref(new Date());
         const events = ref();
         // const months = ref(['2021-11-01', '2021-12-01', '2022-01-01']);
-        const months = ref([-2, -1, 0, 1, 2]);
+        const months = ref([-11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2]);
 
         events.value = [
             {
-                name: 'Verzuim',
+                name: '',
+                start: '2021-01-06',
+                end: '2021-01-16',
+            },
+            {
+                name: '',
+                start: '2021-04-17',
+                end: '2021-04-19',
+            },
+            {
+                name: '',
                 start: '2021-12-07',
                 end: '2021-12-08',
             },
             {
-                name: `Verzuim`,
+                name: ``,
                 start: '2021-11-06',
             },
             // {
-            //     name: `Verzuim`,
+            //     name: ``,
             //     start: '2021-11-06',
             // },
             {
-                name: 'Verzuim',
+                name: '',
                 start: '2022-02-08',
             },
         ]
@@ -86,6 +97,11 @@ export default {
         getCalendarMonth(monthAdjust) {
             const now = new Date()
             return now.setMonth(now.getMonth() + monthAdjust)
+        },
+        getMonthName(month) {
+            const cDate = this.getCalendarMonth(month)
+            const objDate = new Date(cDate)
+            return objDate.toLocaleString(this.getLocale(), { month: "long" });
         }
     }
 }
@@ -117,6 +133,9 @@ export default {
     }
     .v-event {
         margin: 0px 3px 3px 3px;
+    }
+    .v-event-more {
+        background-color: red;
     }
 }
 </style>
