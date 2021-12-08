@@ -35,53 +35,52 @@
     </div>
 </template>
 
-<script>
+<script lang="ts">
 import { ref } from '@vue/composition-api';
 
-// type event = {
-//     name: String,
-//     start: String,
-//     end?: String,
-// }
+interface event {
+    name: String,
+    start: String,
+    end?: String,
+}
+
+const mockEvents: event[] = [
+    {
+        name: '',
+        start: '2021-01-06',
+        end: '2021-01-16',
+    },
+    {
+        name: '',
+        start: '2021-04-17',
+        end: '2021-04-19',
+    },
+    {
+        name: '',
+        start: '2021-12-07',
+        end: '2021-12-08',
+    },
+    {
+        name: ``,
+        start: '2021-11-06',
+    },
+    // {
+    //     name: ``,
+    //     start: '2021-11-06',
+    // },
+    {
+        name: '',
+        start: '2022-02-08',
+    },
+]
 
 export default {
     setup() {
-        // const today = ref<Date>(new Date());
-        // const events = ref<event[]>();
-        const today = ref(new Date());
-        const events = ref();
-        // const months = ref(['2021-11-01', '2021-12-01', '2022-01-01']);
+        const today = ref<Date>(new Date());
+        const events = ref<event[]>();
         const months = ref([-11, -10, -9, -8, -7, -6, -5, -4, -3, -2, -1, 0, 1, 2]);
 
-        events.value = [
-            {
-                name: '',
-                start: '2021-01-06',
-                end: '2021-01-16',
-            },
-            {
-                name: '',
-                start: '2021-04-17',
-                end: '2021-04-19',
-            },
-            {
-                name: '',
-                start: '2021-12-07',
-                end: '2021-12-08',
-            },
-            {
-                name: ``,
-                start: '2021-11-06',
-            },
-            // {
-            //     name: ``,
-            //     start: '2021-11-06',
-            // },
-            {
-                name: '',
-                start: '2022-02-08',
-            },
-        ]
+        events.value = mockEvents
 
         return {
             today,
@@ -94,12 +93,12 @@ export default {
         getLocale() {
             return navigator.language
         },
-        getCalendarMonth(monthAdjust) {
+        getCalendarMonth(monthAdjust: number) {
             const now = new Date()
             return now.setMonth(now.getMonth() + monthAdjust)
         },
-        getMonthName(month) {
-            const cDate = this.getCalendarMonth(month)
+        getMonthName(monthAdjust: number) {
+            const cDate = this.getCalendarMonth(monthAdjust)
             const objDate = new Date(cDate)
             return objDate.toLocaleString(this.getLocale(), { month: "long" });
         }
